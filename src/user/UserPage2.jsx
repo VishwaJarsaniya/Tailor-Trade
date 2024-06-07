@@ -7,13 +7,13 @@ import profile from "../img/profile.png";
 import menu from "../img/menu.png";
 import couturecraft from "../img/couturecraft.jpg";
 import stars from "../img/stars.png";
-import Nav from "../tailor/Nav";
+import Nav from "../Nav";
 import pp from "../img/woman.png";
 import Theme from "../Theme"
 
-function User2() {
+function UserPage2() {
 
-    const isLargeScreen = useMediaQuery(Theme.breakpoints.up('lg'))
+    const isLargeScreen = useMediaQuery(Theme.breakpoints.up('sm'))
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleMenuClick = () => {
@@ -24,14 +24,14 @@ function User2() {
          <div>
             {/*Navbar */}
             {isLargeScreen ? ( 
-            <Box style={{borderRadius:'2px',borderColor:'grey', backgroundColor:'#f7fcfe', height:'80px'}}>
+            <Box style={{borderRadius:'2px',borderColor:'grey', backgroundColor:'#f0f8ff', height:'80px'}}>
                 <CardContent>
                 <div style={{justifyContent:'space-between',display:'flex'}}>
                 <div>
                 <img src={logo} style={{ width: '170px' ,marginLeft:'40px', marginBottom: '10px',marginTop:'-20px'}} />
                 </div>
                 <div>
-                    <Button style={{width:'150px'}}><Typography style={{fontSize:'15px'}}>Home</Typography></Button>
+                    <Button style={{width:'130px'}}><Typography style={{fontSize:'15px'}}>Home</Typography></Button>
                     <Button><img src={bell} style={{width:'20px'}} /></Button>
                     <Button><img src={profile} style={{width:'25px',marginRight:'6px'}}/><Typography style={{fontSize:'15px'}}>Me</Typography></Button>
                 </div>
@@ -40,7 +40,7 @@ function User2() {
             </Box>
 
             ) : (
-            <Box style={{borderRadius:'0.2px',borderColor:'grey', backgroundColor:'#f7fcfe', height:'70px'}}>
+            <Box style={{borderRadius:'0.2px',borderColor:'grey', backgroundColor:'#f0f8ff', height:'70px'}}>
                 <CardContent>
                 <Grid container justifyContent="space-between">
                 <Grid item>
@@ -65,7 +65,7 @@ function User2() {
            {/*Image and Description+Buttons Grid */}
            <Card style={{width:'100%',height:'100%'}}>
                 <CardContent style={{marginLeft:'3.5%',marginRight:'3.5%'}}>
-                        <Typography style={{fontSize:'210%',fontWeight:700,marginTop:'20px',textAlign:'left', marginBottom:'30px',fontFamily:'"Noto Serif", serif'}}>CoutureCraft</Typography>
+                        <Typography style={{fontSize:'210%',fontWeight:700,marginTop:'20px',textAlign:'left', marginBottom:'30px'}}>CoutureCraft</Typography>
                 
                 <Grid container>
                      <Grid item md={12} lg={7}>
@@ -186,4 +186,4 @@ function User2() {
 
 };
 
-export default User2;
+export default UserPage2;

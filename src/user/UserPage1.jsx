@@ -1,14 +1,31 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardMedia, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Link } from "@mui/material";
-import NavUser from "../NavUser";
-import data from "../data/products.json" // Import your JSON data here
+import { Card, CardContent, CardMedia, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Link, Button,Box, useMediaQuery } from "@mui/material";
+import NavUser from "../Nav";
+import data from "../data/products.json"
+import bell from "../img/bell.png";
+import profile from "../img/profile.png";
+import menu from "../img/menu.png";
+import couturecraft from "../img/couturecraft.jpg";
+import stars from "../img/stars.png";
+import Nav from "../Nav";
+import pp from "../img/woman.png";
+import logo from "../img/logo.png";
+import Theme from "../Theme"
 
-function HomePageUser() {
+function UserPage1() {
+
   const [filters, setFilters] = useState({
     city: '',
     rating: '',
     experience: ''
   });
+
+  const isLargeScreen = useMediaQuery(Theme.breakpoints.up('sm'))
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const handleMenuClick = () => {
+      setIsMenuOpen(!isMenuOpen);
+  }
 
   const filteredData = data.filter(shop => {
     // Filter by city
@@ -37,10 +54,48 @@ function HomePageUser() {
 
   return (
     <div style={{ overflowY: 'auto' }}>
-      <CardContent style={{ padding: '0px' }}>
-        <NavUser />
-        <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '20px', textAlign: 'left', marginLeft: '30px', marginBottom: '30px' }}>Filters</Typography>
-        <Grid container spacing={2} style={{padding:'10px'}}>
+
+       {/*Navbar */}
+       {isLargeScreen ? ( 
+            <Box style={{borderRadius:'2px',borderColor:'grey', backgroundColor:'#f0f8ff', height:'80px'}}>
+                <CardContent>
+                <div style={{justifyContent:'space-between',display:'flex'}}>
+                <div>
+                <img src={logo} style={{ width: '170px' ,marginLeft:'40px', marginBottom: '10px',marginTop:'-20px'}} />
+                </div>
+                <div>
+                    <Button style={{width:'130px'}}><Typography style={{fontSize:'15px'}}>Home</Typography></Button>
+                    <Button><img src={bell} style={{width:'20px'}} /></Button>
+                    <Button><img src={profile} style={{width:'25px',marginRight:'6px'}}/><Typography style={{fontSize:'15px'}}>Me</Typography></Button>
+                </div>
+                </div>
+                </CardContent>
+            </Box>
+
+            ) : (
+            <Box style={{borderRadius:'0.2px',borderColor:'grey', backgroundColor:'#f0f8ff', height:'70px'}}>
+                <CardContent>
+                <Grid container justifyContent="space-between">
+                <Grid item>
+                    <Button onClick={handleMenuClick}><img src={menu} style={{width:'20px'}} /></Button>
+                    {isMenuOpen && (
+                            <Card style={{ position: 'absolute', top: '70px', left: 0, width: '290px',height:'auto', zIndex: 999, backgroundColor:"#fff" }}>
+                                <Grid item>
+                                <Nav />
+                                </Grid>
+                            </Card>
+                    )}
+                </Grid>
+               
+                </Grid>
+                </CardContent>
+            </Box>
+            )}
+
+      <CardContent style={{ padding: '0px',marginLeft:'3.5%',marginRight:'3.5%' }}>
+    
+        <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '40px', textAlign: 'left', marginLeft: '30px', marginBottom: '10px' }}>Filters</Typography>
+        <Grid container spacing={2} style={{padding:'25px'}}>
           <Grid item xs={12} sm={6} md={4}>
             <FormControl fullWidth>
               <InputLabel id="city-filter-label">City</InputLabel>
@@ -99,9 +154,9 @@ function HomePageUser() {
           </Grid>
         </Grid>
         <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '20px', textAlign: 'left', marginLeft: '30px', marginBottom: '30px' }}>Tailors</Typography>
-        <Grid container spacing={2}>
+        <Grid container spacing={2} style={{padding:'10px'}}>
           {filteredData.map((shop, index) => (
-            <Grid item key={index} xs={12} sm={6} md={4} lg={4} xl={4} sx={{ minWidth: 0, width: '100%' }}>
+            <Grid item key={index} xs={12} sm={6} md={4} lg={4} xl={4} sx={{ minWidth: 0, width: '95%' }}>
               <Link href={shop.portfolioUrl} target="_blank" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <Card
                   style={{ margin: '10px', borderRadius: '10px', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', transition: 'box-shadow 0.3s' }}
@@ -109,7 +164,7 @@ function HomePageUser() {
                 >
                   <CardMedia
                     component="img"
-                    height="200"
+                    height="400"
                     image={shop.portfolioPhotos}
                     alt="Shop Portfolio"
                     style={{ borderRadius: '10px 10px 0 0' }}
@@ -132,4 +187,4 @@ function HomePageUser() {
   );
 };
 
-export default HomePageUser;
+export default UserPage1;

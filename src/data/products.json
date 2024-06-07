@@ -11,13 +11,13 @@
         "username": "elite_tailoring",
         "password": "securePass123",
         "mobileno": "9123456780",
-        "serviceTypes": "Tailoring, Alterations",
+        "serviceTypes": "Custom Tailoring",
         "experienceYears": 5,
         "num_reviews": 5,
         "portfolioUrl": "https://portfolio-elite.vercel.app/",
         "shopName": "Elite Tailoring",
         "location": "Mumbai",
-        "portfolioPhotos": "https://22400058.fs1.hubspotusercontent-na1.net/hub/22400058/hubfs/football-logo-manchester-united.jpg?width=1920&name=football-logo-manchester-united.jpg",
+        "portfolioPhotos": "https://www.joshindia.com/cdn/shop/products/WhatsAppImage2023-01-31at6.24.48PM.jpg?v=1675249312",
         "skills": "Sewing, Pattern Making"
       },
       {
@@ -37,7 +37,7 @@
         "portfolioUrl": "https://portfolio-perfect.vercel.app/",
         "shopName": "Perfect Stitch",
         "location": "Delhi",
-        "portfolioPhotos": "https://22400058.fs1.hubspotusercontent-na1.net/hub/22400058/hubfs/football-logo-fc-barcelona.jpg?width=1920&name=football-logo-fc-barcelona.jpg",
+        "portfolioPhotos": "https://www.joshindia.com/cdn/shop/products/BL1129.jpg?v=1628945555&width=533",
         "skills": "Sewing, Embroidery"
       },
       {
@@ -57,7 +57,7 @@
         "portfolioUrl": "https://portfolio-royal.vercel.app/",
         "shopName": "Royal Tailors",
         "location": "Bengaluru",
-        "portfolioPhotos": "https://22400058.fs1.hubspotusercontent-na1.net/hub/22400058/hubfs/football-logo-real-madrid.jpg?width=1920&name=football-logo-real-madrid.jpg",
+        "portfolioPhotos": "https://www.sumangali.co/cdn/shop/files/WhatsAppImage2023-08-08at1.43.47PM.jpg?v=1693656601&width=1445",
         "skills": "Pattern Making, Fitting"
       },
       {
@@ -77,7 +77,7 @@
         "portfolioUrl": "https://portfolio-urban.vercel.app/",
         "shopName": "Urban Tailors",
         "location": "Hyderabad",
-        "portfolioPhotos": "https://22400058.fs1.hubspotusercontent-na1.net/hub/22400058/hubfs/football-logo-liverpool.jpg?width=1920&name=football-logo-liverpool.jpg",
+        "portfolioPhotos": "https://imagescdn.vanheusenindia.com/img/app/product/6/670812-6934030.jpg?auto=format&w=390",
         "skills": "Sewing, Custom Fitting"
       },
       {
@@ -97,7 +97,7 @@
         "portfolioUrl": "https://portfolio-classic.vercel.app/",
         "shopName": "Classic Tailors",
         "location": "Chennai",
-        "portfolioPhotos": "https://22400058.fs1.hubspotusercontent-na1.net/hub/22400058/hubfs/football-logo-ac-milan.jpg?width=1920&name=football-logo-ac-milan.jpg",
+        "portfolioPhotos": "https://www.joshindia.com/cdn/shop/products/2999_4.jpg?v=1627553707&width=533",
         "skills": "Pattern Making, Sewing"
       },
       {
@@ -117,7 +117,7 @@
         "portfolioUrl": "https://portfolio-precision.vercel.app/",
         "shopName": "Precision Tailors",
         "location": "Pune",
-        "portfolioPhotos": "https://22400058.fs1.hubspotusercontent-na1.net/hub/22400058/hubfs/football-logo-bayern-munchen.jpg?width=1920&name=football-logo-bayern-munchen.jpg",
+        "portfolioPhotos": "https://i.pinimg.com/736x/99/5a/07/995a075755507b74de02a11abaf36e79.jpg",
         "skills": "Sewing, Pattern Making"
       },
       {
@@ -135,9 +135,9 @@
         "experienceYears": 9,
         "num_reviews": 5,
         "portfolioUrl": "https://portfolio-trendy.vercel.app/",
-        "shopName": "Trendy Tailors",
+        "shopName": "Couture Craft",
         "location": "Kolkata",
-        "portfolioPhotos": "https://22400058.fs1.hubspotusercontent-na1.net/hub/22400058/hubfs/football-logo-juventus-fc.jpg?width=1920&name=football-logo-juventus-fc.jpg",
+        "portfolioPhotos": "https://imagescdn.vanheusenindia.com/img/app/product/3/39668751-13555021.jpg?auto=format&w=390",
         "skills": "Embroidery, Sewing"
     },
     {
@@ -157,7 +157,7 @@
       "portfolioUrl": "https://portfolio-modern.vercel.app/",
       "shopName": "Modern Tailors",
       "location": "Ahmedabad",
-      "portfolioPhotos": "https://22400058.fs1.hubspotusercontent-na1.net/hub/22400058/hubfs/football-logo-paris-saint-germain.jpg?width=1920&name=football-logo-paris-saint-germain.jpg",
+      "portfolioPhotos": "https://www.joshindia.com/cdn/shop/products/BL1103-1950-dp051.jpg?v=1629355655&width=533",
       "skills": "Pattern Making, Sewing"
     }
 ]

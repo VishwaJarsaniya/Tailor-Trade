@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardContent, Grid, Typography, Button, Link } from "@mui/material";
 import SideBarNav from "./SideBarNav";
 import Nav from "../Nav";
+import DealsDetails from "./DealsDetails";
 import stars from "../img/stars.png";
 import star1 from "../img/1star.jpg"
 import star2 from "../img/2star.jpg"
@@ -32,7 +33,12 @@ function TrackOrders() {
                         <Grid item>
                             <Nav />
                             <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '20px', textAlign: 'left', marginLeft: '30px', marginBottom: '30px' }}>Track Orders</Typography>
-                           
+                            <Card style={{ width: '95%', borderRadius: '15px', marginLeft: '2.4%', marginTop: '35px', marginBottom: '40px' }}>
+                            <CardContent>
+                                <Typography style={{ textAlign: 'left', fontSize: '145%', fontWeight: 600, marginTop: '5px', marginLeft: '10px', marginBottom: '20px' }}>Deals Details</Typography>
+                                <DealsDetails />
+                            </CardContent>
+                        </Card>
                         </Grid>
                     </Card>
                 </Grid>

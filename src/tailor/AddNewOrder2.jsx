@@ -28,7 +28,7 @@ function AddNewOrder2() {
                 <Grid container>
                 {isLargeScreen && ( 
                 <Grid item style={{width:'20%' }}>
-                    <Card style={{height:'780px'}}>
+                    <Card style={{height:'1065px'}}>
                         <SideBarNav />
                     </Card>
                     </Grid>

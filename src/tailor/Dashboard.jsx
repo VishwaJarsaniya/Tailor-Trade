@@ -156,14 +156,16 @@ function Dashboard() {
                                 <img src={graph} style={{ width: '90%' }} />
                             </CardContent>
                         </Card>
-
-                        {/* Deals Details */}
+                        
+                        {/*     
+                        //Deal details
                         <Card style={{ width: '95%', borderRadius: '15px', marginLeft: '2.4%', marginTop: '35px', marginBottom: '40px' }}>
                             <CardContent>
                                 <Typography style={{ textAlign: 'left', fontSize: '145%', fontWeight: 600, marginTop: '5px', marginLeft: '10px', marginBottom: '20px' }}>Deals Details</Typography>
                                 <DealsDetails />
                             </CardContent>
-                        </Card>
+                        </Card> */}
+                        
                         </Card>
                     </Grid>
                 </Grid>
