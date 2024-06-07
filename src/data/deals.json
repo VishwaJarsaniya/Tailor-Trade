@@ -1,0 +1,102 @@
+[
+  {
+      "id": 1,
+      "productName": "Men's Suit",
+      "location": "New York",
+      "date": "2024-04-05",
+      "time": "10:00:00",
+      "numberOfItems": 1,
+      "amount": 8000,
+      "status": "Delivered"
+  },
+  {
+      "id": 2,
+      "productName": "Women's Dress",
+      "location": "Los Angeles",
+      "date": "2024-04-06",
+      "time": "14:30:00",
+      "numberOfItems": 1,
+      "amount": 2500,
+      "status": "Pending"
+  },
+  {
+      "id": 3,
+      "productName": "Men's Shirt",
+      "location": "Chicago",
+      "date": "2024-04-07",
+      "time": "11:15:00",
+      "numberOfItems": 2,
+      "amount": 1000,
+      "status": "In Progress"
+  },
+  {
+      "id": 4,
+      "productName": "Women's Blouse",
+      "location": "Houston",
+      "date": "2024-04-08",
+      "time": "09:45:00",
+      "numberOfItems": 1,
+      "amount": 800,
+      "status": "Delivered"
+  },
+  {
+      "id": 5,
+      "productName": "Men's Trousers",
+      "location": "Miami",
+      "date": "2024-04-09",
+      "time": "16:00:00",
+      "numberOfItems": 1,
+      "amount": 2800,
+      "status": "Pending"
+  },
+  {
+      "id": 6,
+      "productName": "Women's Skirt",
+      "location": "San Francisco",
+      "date": "2024-04-10",
+      "time": "13:45:00",
+      "numberOfItems": 1,
+      "amount": 3000,
+      "status": "In Progress"
+  },
+  {
+      "id": 7,
+      "productName": "Men's Jacket",
+      "location": "Seattle",
+      "date": "2024-04-11",
+      "time": "10:30:00",
+      "numberOfItems": 1,
+      "amount": 2000,
+      "status": "Delivered"
+  },
+  {
+      "id": 8,
+      "productName": "Women's Coat",
+      "location": "Boston",
+      "date": "2024-04-12",
+      "time": "15:20:00",
+      "numberOfItems": 1,
+      "amount": 1800,
+      "status": "Pending"
+  },
+  {
+      "id": 9,
+      "productName": "Men's Vest",
+      "location": "Dallas",
+      "date": "2024-04-13",
+      "time": "11:00:00",
+      "numberOfItems": 1,
+      "amount": 2700,
+      "status": "In Progress"
+  },
+  {
+      "id": 10,
+      "productName": "Women's Jacket",
+      "location": "Atlanta",
+      "date": "2024-04-14",
+      "time": "14:00:00",
+      "numberOfItems": 1,
+      "amount": 2200,
+      "status": "Delivered"
+  }
+]

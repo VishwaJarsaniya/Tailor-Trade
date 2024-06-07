@@ -1,0 +1,31 @@
+[
+    {
+      "id": 1,
+      "name": "John Doe",
+      "date": "2024-03-15",
+      "stars": 5,
+      "description": "I had an amazing experience with this tailor! The craftsmanship was superb, and the attention to detail was exceptional. I highly recommend their services."
+    },
+    {
+      "id": 2,
+      "name": "Jane Smith",
+      "date": "2024-03-20",
+      "stars": 4,
+      "description": "My experience with this tailor was quite satisfactory. The garment was well-made and fit perfectly, though there were a few minor issues. Overall, I'm pleased with the outcome."
+    },
+    {
+      "id": 3,
+      "name": "Michael Johnson",
+      "date": "2024-03-25",
+      "stars": 3,
+      "description": "The service provided by this tailor was average. While the garment was decently stitched, there were some flaws that could have been avoided. I expected better attention to detail."
+    },
+    {
+      "id": 4,
+      "name": "Emily Brown",
+      "date": "2024-03-28",
+      "stars": 5,
+      "description": "I couldn't be happier with the work done by this tailor! The finished product exceeded my expectations in every way. I will definitely be returning for future projects."
+    }
+  ]
+  
