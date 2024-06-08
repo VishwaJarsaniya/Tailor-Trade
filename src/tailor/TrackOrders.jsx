@@ -24,9 +24,7 @@ function TrackOrders() {
                 <Grid container>
                 {isLargeScreen && ( 
                 <Grid item style={{width:'20%' }}>
-                    <Card style={{height:'1085px'}}>
                         <SideBarNav />
-                    </Card>
                     </Grid>
                 )}
                     <Card sx={{ width:{xxs:'100%',lg:'80%'}, height: '100%', backgroundColor: '#F5F6FA' }}>

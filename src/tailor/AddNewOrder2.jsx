@@ -12,7 +12,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 function AddNewOrder2() {
     const isLargeScreen = useMediaQuery(Theme.breakpoints.up('lg'))
 
-
     const handleClick = (outfitType) => {
         console.log(`Clicked on ${outfitType}`);
     };
@@ -28,16 +27,14 @@ function AddNewOrder2() {
                 <Grid container>
                 {isLargeScreen && ( 
                 <Grid item style={{width:'20%' }}>
-                    <Card style={{height:'1065px'}}>
                         <SideBarNav />
-                    </Card>
                     </Grid>
                 )}
 
                     <Card sx={{width:{xxs:'100%',lg:'80%'}, height: '100%', backgroundColor: '#f5f8fe' }}>
                         <Grid item>
                             <Nav />
-                            <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '20px', textAlign: 'left', marginLeft: '30px', marginBottom: '30px' }}>Add New Orders</Typography>
+                            <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '20px', textAlign: 'left', marginLeft: '30px', marginBottom: '30px' }}>Add New Order</Typography>
 
 
 
@@ -88,7 +85,7 @@ function AddNewOrder2() {
                                                 margin: '10px',
                                                 cursor: 'pointer',
                                                 '&:hover': {
-                                                    boxShadow: 6, // You can use other values like 3, 4, 5 for different shadow effects
+                                                    boxShadow: 6,
                                                 }
                                             }}
                                         />

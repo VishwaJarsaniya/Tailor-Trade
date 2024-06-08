@@ -5,6 +5,7 @@ import SideBarNav from "./SideBarNav";
 import Nav from "../Nav";
 import camera from "../img/camera.png"
 import Theme from "../Theme";
+import Swal from "sweetalert2";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
@@ -14,16 +15,31 @@ function AddNewOrder1() {
 
     const [name, setName] = useState('');
     const [gender, setGender] = useState('');
+    const [photos, setPhotos] = useState([]);
 
     const handleGenderChange = (event) => {
         setGender(event.target.value);
     }
 
+    const handlePhotoChange = (event) => {
+        const files = event.target.files;
+        const newPhotos = [...photos];
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            // Check if the file format is supported
+            if (file.type === "image/jpeg" || file.type === "image/png") {
+                newPhotos.push(file);
+            }
+        }
+        setPhotos(newPhotos);
+        if (newPhotos.length > 0) {
+            Swal.fire("Image(s) uploaded", "", "success");
+        }
+    }
+
     {isLargeScreen && ( 
         <Grid item style={{width:'20%' }}>
-            <Card style={{height:'1085px'}}>
                 <SideBarNav />
-            </Card>
             </Grid>
         )}
 
@@ -47,7 +63,12 @@ function AddNewOrder1() {
                 <Typography style={{fontSize:'210%',fontWeight:700,marginTop:'20px',textAlign:'left',marginLeft:'30px', marginBottom:'30px'}}>Add New Order</Typography>
                 <Card style={{width:'95%',borderRadius:'15px', marginLeft:'2.4%', marginTop:'35px', marginBottom:'40px'}}>
                     <CardContent>
-                        <Button><img src={camera} style={{width:'60px'}}/></Button>
+                        <input type="file" accept="image/*" style={{ display: "none" }} onChange={handlePhotoChange} id="upload-photo" multiple />
+                        <label htmlFor="upload-photo">
+                            <Button component="span">
+                                <img src={camera} style={{width:'60px'}}/>
+                            </Button>
+                        </label>
                         <Typography style={{marginBottom:'30px'}}>Upload Photo</Typography>
                         <Grid container spacing={4}>
                             <Grid item xxs={12} md={6}>

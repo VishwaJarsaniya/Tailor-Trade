@@ -35,11 +35,11 @@ function Dashboard() {
             <CardContent style={{ padding: '0px' }}>
                 <Grid container>
                     {isLargeScreen && (
-                        <Grid item lg={2}>
+                        <Grid item lg={2.4}>
                             <SideBarNav />
                         </Grid>
                     )}
-                    <Grid item lg={isLargeScreen ? 10 : 12}>
+                    <Grid item lg={isLargeScreen ? 9.6 : 12}>
                     <Card style={{width:'100%',height:'100%', backgroundColor:'#f5f8fe'}}>
                         <Nav />
                         <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '20px', textAlign: 'left', marginLeft: '30px', marginBottom: '30px' }}>Dashboard</Typography>
@@ -150,7 +150,7 @@ function Dashboard() {
                         </Grid>
 
                         {/* Sales Details */}
-                        <Card style={{ width: '95%', borderRadius: '15px', marginLeft: '35px', marginTop: '35px' }}>
+                        <Card style={{ width: '95%', borderRadius: '15px', marginLeft: '35px', marginTop: '35px',marginBottom: '40px' }}>
                             <CardContent>
                                 <Typography style={{ textAlign: 'left', fontSize: '145%', fontWeight: 600, marginTop: '5px', marginLeft: '10px' }}>Sales Details</Typography>
                                 <img src={graph} style={{ width: '90%' }} />
