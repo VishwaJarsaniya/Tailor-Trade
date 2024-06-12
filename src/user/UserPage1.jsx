@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, CardContent, CardMedia, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Link, Button,Box, useMediaQuery } from "@mui/material";
+import { Card, CardContent, CardMedia, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Button,Box, useMediaQuery } from "@mui/material";
 import NavUser from "../Nav";
 import data from "../data/products.json"
 import bell from "../img/bell.png";
@@ -10,7 +10,8 @@ import stars from "../img/stars.png";
 import Nav from "../Nav";
 import pp from "../img/woman.png";
 import logo from "../img/logo.png";
-import Theme from "../Theme"
+import Theme from "../Theme";
+import { Link } from "react-router-dom";
 
 function UserPage1() {
 
@@ -157,7 +158,7 @@ function UserPage1() {
         <Grid container spacing={2} style={{padding:'10px'}}>
           {filteredData.map((shop, index) => (
             <Grid item key={index} xs={12} sm={6} md={4} lg={4} xl={4} sx={{ minWidth: 0, width: '95%' }}>
-              <Link href={shop.portfolioUrl} target="_blank" style={{ textDecoration: 'none', color: 'inherit' }}>
+              <Link to="/user/UserPage2" target="_blank" style={{ textDecoration: 'none', color: 'inherit' }}>
                 <Card
                   style={{ margin: '10px', borderRadius: '10px', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', transition: 'box-shadow 0.3s' }}
                   sx={{ '&:hover': { boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.25)' } }}

@@ -10,6 +10,7 @@ import stars from "../img/stars.png";
 import Nav from "../Nav";
 import pp from "../img/woman.png";
 import Theme from "../Theme"
+import { Link } from "react-router-dom";
 
 function UserPage2() {
 
@@ -76,7 +77,7 @@ function UserPage2() {
                     
                         <Box sx={{marginTop:{xxs:'45px',lg:'15%'}}}>
                             <Typography style={{fontSize:'120%',fontWeight:500}}>Average price: $32</Typography>
-                            <Button sx={{backgroundColor:'#90c8c9',color:'#fff',marginTop:'15px',height:'36px',width:{xxs:'280px',xs:'350px'}}}><Typography style={{textTransform:'none'}}>Add Order</Typography></Button>
+                            <Link to="/user/AddNewOrder" ><Button sx={{backgroundColor:'#90c8c9',color:'#fff',marginTop:'15px',height:'36px',width:{xxs:'280px',xs:'350px'}}}><Typography style={{textTransform:'none'}}>Add Order</Typography></Button></Link>
                             <br />
                             <Button  sx={{backgroundColor:'#f7fcfe',color:'#90c8c9',marginTop:'15px',height:'35px',width:{xxs:'280px',xs:'350px'},borderColor:'#90c8c9',border:'2px solid'}}><Typography style={{textTransform:'none'}}>Schedule an Appointment</Typography></Button>
                        
