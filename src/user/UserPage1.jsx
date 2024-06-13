@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import { Card, CardContent, CardMedia, Grid, Typography, FormControl, InputLabel, Select, MenuItem, Button,Box, useMediaQuery } from "@mui/material";
 import NavUser from "../Nav";
 import data from "../data/products.json"
@@ -11,10 +11,35 @@ import Nav from "../Nav";
 import pp from "../img/woman.png";
 import logo from "../img/logo.png";
 import Theme from "../Theme";
+import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
-function UserPage1() {
+const UserPage1=()=> {
+  
+  const [tailors, setTailors] = useState([]);
+  const navigate=useNavigate();
 
+  useEffect(() => {
+    const fetchTailors = async () => {
+      try {
+        const response = await fetch("https://tailortradebackendweb.onrender.com/tailor/getAllTailors", {
+          method: "GET",
+        });
+        const result = await response.json();
+        setTailors(result);
+        console.log(result);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    fetchTailors();
+  }, []);
+
+  const handleClick=(_id)=>{
+    console.log(_id);
+    navigate(`/user/${_id}`)
+  }
   const [filters, setFilters] = useState({
     city: '',
     rating: '',
@@ -28,17 +53,17 @@ function UserPage1() {
       setIsMenuOpen(!isMenuOpen);
   }
 
-  const filteredData = data.filter(shop => {
+  const filteredData = tailors.filter(shop => {
     // Filter by city
     if (filters.city && shop.location !== filters.city) return false;
 
     // Filter by average rating
     if (filters.rating) {
-      if (filters.rating === '>4' && shop.avg_rating <= 4) return false;
-      if (filters.rating === '>3' && shop.avg_rating <= 3) return false;
-      if (filters.rating === '>2' && shop.avg_rating <= 2) return false;
-      if (filters.rating === '>1' && shop.avg_rating <= 1) return false;
-      if (filters.rating === '5' && Math.floor(shop.avg_rating) !== 5) return false;
+      if (filters.rating === '>4' && shop.averageRating <= 4) return false;
+      if (filters.rating === '>3' && shop.averageRating <= 3) return false;
+      if (filters.rating === '>2' && shop.averageRating <= 2) return false;
+      if (filters.rating === '>1' && shop.averageRating <= 1) return false;
+      if (filters.rating === '5' && Math.floor(shop.averageRating) !== 5) return false;
     }
 
     // Filter by years of experience
@@ -158,10 +183,11 @@ function UserPage1() {
         <Grid container spacing={2} style={{padding:'10px'}}>
           {filteredData.map((shop, index) => (
             <Grid item key={index} xs={12} sm={6} md={4} lg={4} xl={4} sx={{ minWidth: 0, width: '95%' }}>
-              <Link to="/user/UserPage2" target="_blank" style={{ textDecoration: 'none', color: 'inherit' }}>
+              {/* <Link to="/user/UserPage2" target="_blank" style={{ textDecoration: 'none', color: 'inherit' }}> */}
                 <Card
                   style={{ margin: '10px', borderRadius: '10px', boxShadow: '0px 4px 4px rgba(0, 0, 0, 0.25)', transition: 'box-shadow 0.3s' }}
                   sx={{ '&:hover': { boxShadow: '0px 8px 8px rgba(0, 0, 0, 0.25)' } }}
+                  onClick={()=>{handleClick(shop._id)}}
                 >
                   <CardMedia
                     component="img"
@@ -174,12 +200,12 @@ function UserPage1() {
                     <Typography variant="h6">{shop.shopName}</Typography>
                     <Typography variant="subtitle1">{shop.location}</Typography>
                     <Typography variant="body1">{shop.serviceTypes}</Typography>
-                    <Typography variant="body1">Average Rating: ${shop.avg_rating}</Typography>
+                    <Typography variant="body1">Average Rating: ${shop.averageRating}</Typography>
                     <Typography variant="body1">Number of Reviews: ${shop.num_reviews}</Typography>
                     <Typography variant="body1">Experience Years: ${shop.experienceYears}</Typography>
                   </CardContent>
                 </Card>
-              </Link>
+              {/* </Link> */}
             </Grid>
           ))}
         </Grid>

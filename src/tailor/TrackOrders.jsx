@@ -12,7 +12,7 @@ import star5 from "../img/5star.jpg"
 import Review from "../data/reviews.json"
 import { useAuth } from '../context/AuthContext';
 import Theme from "../Theme";
-import DealsDetails from "./DealsDetails";
+// import DealsDetails from "./DealsDetails";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 function TrackOrders() {
@@ -39,12 +39,7 @@ function TrackOrders() {
                             </CardContent>
                         </Card>
                         </Grid>
-                        <Card style={{ width: '95%', borderRadius: '15px', marginLeft: '2.4%', marginTop: '35px', marginBottom: '40px' }}>
-                            <CardContent>
-                                <Typography style={{ textAlign: 'left', fontSize: '145%', fontWeight: 600, marginTop: '5px', marginLeft: '10px', marginBottom: '20px' }}>Deals Details</Typography>
-                                <DealsDetails />
-                            </CardContent>
-                        </Card>
+                        
                     </Card>
                 </Grid>
             </CardContent>

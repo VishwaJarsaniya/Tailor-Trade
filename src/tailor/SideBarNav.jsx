@@ -77,7 +77,7 @@ function SideBarNav() {
                             </Button>
                         </li>
                         <li>
-                            <Button onClick={() => handleButtonClick("addneworders", "/tailor/AddNewOrder1")} style={{ ...buttonStyle, backgroundColor: selectedButton === "addneworders" ? "#90c8c9" : "#fff" }}>
+                            <Button onClick={() => handleButtonClick("addneworders", "/tailor/AddNewOrder")} style={{ ...buttonStyle, backgroundColor: selectedButton === "addneworders" ? "#90c8c9" : "#fff" }}>
                                 <img src={order} style={{ width: "20px" }} />
                                 <Typography style={{ fontSize: "112%", marginLeft: "15px", textTransform: "none" }}>Add New Order</Typography>
                             </Button>

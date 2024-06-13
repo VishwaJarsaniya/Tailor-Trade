@@ -24,7 +24,7 @@ function Reviews() {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await fetch("http://localhost:8080/review/reviews", {
+                const response = await fetch("https://tailortradebackendweb.onrender.com/review/reviews", {
                     method: "GET",
                 });
                 const result = await response.json();

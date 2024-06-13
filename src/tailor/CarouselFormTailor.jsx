@@ -60,7 +60,7 @@ function CarouselForm() {
       console.log('All fields are filled. Proceed to login.');
       console.log(formData); // You can handle form submission here
       try{
-        const response=await fetch("http://localhost:8080/tailor/signup" ,{
+        const response=await fetch("https://tailortradebackendweb.onrender.com/tailor/signup" ,{
           method:"POST",
           headers: {
             'Content-Type': 'application/json', // Set the Content-Type header

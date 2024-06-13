@@ -37,7 +37,7 @@ const AddNewOrder2=({formData ,formData1,onBack,onChange})=> {
 
     const handleClick = async (outfitType) => {
         try {
-            const response = await fetch('http://localhost:8080/tailor/getTailorByEmail', {
+            const response = await fetch('https://tailortradebackendweb.onrender.com/tailor/getTailorByEmail', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -58,12 +58,6 @@ const AddNewOrder2=({formData ,formData1,onBack,onChange})=> {
             console.error('Error fetching data:', error);
         }
     };
-
-    const handleClick = (outfitType) => {
-        console.log(`Clicked on ${outfitType}`);
-    };
-
-    const [urgent, setUrgent] = useState(false);
 
     const handleUrgentChange = (event) => {
         setUrgentNeed(event.target.checked);
@@ -87,7 +81,7 @@ const AddNewOrder2=({formData ,formData1,onBack,onChange})=> {
     
     try {
 
-        const response = await fetch('http://localhost:8080/client/orders', {
+        const response = await fetch('https://tailortradebackendweb.onrender.com/client/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -111,7 +105,7 @@ const AddNewOrder2=({formData ,formData1,onBack,onChange})=> {
         
 if(client){
     try {
-        const response = await fetch('http://localhost:8080/order/orders', {
+        const response = await fetch('https://tailortradebackendweb.onrender.com/order/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -135,7 +129,7 @@ if(client){
                 type:formData.type
             }
             try{
-                const payment=await fetch("http://localhost:8080/payment/checkout",{
+                const payment=await fetch("https://tailortradebackendweb.onrender.com/payment/checkout",{
                     method:"POST",
                     headers: {
                         'Content-Type': 'application/json',
@@ -159,21 +153,6 @@ if(client){
 }
     return (
         <div style={{ overflowY: 'auto' }}>
-            <CardContent style={{ padding: '0px' }}>
-                <Grid container>
-                {isLargeScreen && ( 
-                <Grid item style={{width:'20%' }}>
-                        <SideBarNav />
-                    </Grid>
-                )}
-
-                    <Card sx={{width:{xxs:'100%',lg:'80%'}, height: '100%', backgroundColor: '#f5f8fe' }}>
-                        <Grid item>
-                            <Nav />
-                            <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '20px', textAlign: 'left', marginLeft: '30px', marginBottom: '30px' }}>Add New Order</Typography>
-
-
-
                             {/*The main card */}
                             <form onSubmit={handleSubmit}>
                             <Card
@@ -222,7 +201,7 @@ if(client){
                                                 margin: '10px',
                                                 cursor: 'pointer',
                                                 '&:hover': {
-                                                    boxShadow: 6,
+                                                    boxShadow: 6, // You can use other values like 3, 4, 5 for different shadow effects
                                                 }
                                             }}
                                         />

@@ -32,7 +32,7 @@ export default function DealsDetails() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch("http://localhost:8080/order/orders", {
+        const response = await fetch("https://tailortradebackendweb.onrender.com/order/orders", {
           method: "GET",
         });
         const result = await response.json();
@@ -49,7 +49,7 @@ export default function DealsDetails() {
     const fetchClients = async () => {
       const clientsPromises = orders.map(async (order) => {
         try {
-          const clientResponse = await fetch(`http://localhost:8080/client/orders/${order.client}`, {
+          const clientResponse = await fetch(`https://tailortradebackendweb.onrender.com/client/orders/${order.client}`, {
             method: "GET",
           });
           const clientData = await clientResponse.json();
@@ -72,7 +72,6 @@ export default function DealsDetails() {
 
   return (
     <TableContainer component={Paper}>
-    <TableContainer component={Paper}>
       <Table aria-label="simple table">
         <TableHead>
           <TableRow style={{ backgroundColor: '#F1F4F9' }}>
@@ -90,13 +89,13 @@ export default function DealsDetails() {
                   <Typography style={{ fontWeight: 600, marginLeft: '15px' }}>Date</Typography>
                 </TableCell>
                 <TableCell style={{ justifyContent: 'space-evenly' }}>
-                  <Typography style={{ fontWeight: 600, marginLeft: '8px' }}>Time</Typography>
+                  <Typography style={{ fontWeight: 600, marginLeft: '8px' }}>Type</Typography>
                 </TableCell>
               </>
             )}
-            <TableCell style={{ justifyContent: 'space-evenly' }}>
+            {/* <TableCell style={{ justifyContent: 'space-evenly' }}>
               <Typography style={{ fontWeight: 600 }}>Items</Typography>
-            </TableCell>
+            </TableCell> */}
             {!isVerySmallScreen && !isSmallScreen && (
               <TableCell style={{ justifyContent: 'space-evenly' }}>
                 <Typography style={{ fontWeight: 600 }}>Amount</Typography>
@@ -109,31 +108,25 @@ export default function DealsDetails() {
         </TableHead>
         <TableBody>
           {completeOrders.map((deal) => (
-            <TableRow key={deal._id} sx={{ '&:last-child td, &:last-child th': { border: 0 } }}>
+            <TableRow
+              key={deal.id}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
               <TableCell component="th" scope="row">
-                {deal.product_name}
-              </TableCell>
-              <TableCell>{deal.client && deal.client.address}</TableCell>
-              <TableCell>{deal.delivery_date.split('T')[0]}</TableCell>
-              <TableCell>{deal.type}</TableCell>
-              <TableCell>Rs. {deal.total_amount}</TableCell>
-              <TableCell style={{ textAlign: 'center' }}>
-                <Card style={{ width: '85px', padding: '4px', ...getBgColor(deal.status) }}>
-                  <Typography style={{ color: '#000', fontSize: '13px' }}>{deal.status}</Typography>
-                </Card>
+              {deal.product_name}
               </TableCell>
               {!isVerySmallScreen && (
-                <TableCell style={{ justifyContent: 'space-evenly' }}>{deal.location}</TableCell>
+                <TableCell style={{ justifyContent: 'space-evenly' }}>{deal.client && deal.client.address}</TableCell>
               )}
               {!isSmallScreen && !isVerySmallScreen && (
                 <>
-                  <TableCell style={{ justifyContent: 'space-evenly' }}>{deal.date}</TableCell>
-                  <TableCell style={{ justifyContent: 'space-evenly' }}>{deal.time}</TableCell>
+                  <TableCell style={{ justifyContent: 'space-evenly' }}>{deal.delivery_date.split('T')[0]}</TableCell>
+                  <TableCell style={{ justifyContent: 'space-evenly' }}>{deal.type}</TableCell>
                 </>
               )}
-              <TableCell style={{ justifyContent: 'space-evenly', marginLeft: '20px' }}>{deal.numberOfItems}</TableCell>
+              {/* <TableCell style={{ justifyContent: 'space-evenly', marginLeft: '20px' }}>{deal.numberOfItems}</TableCell> */}
               {!isVerySmallScreen && !isSmallScreen && (
-                <TableCell style={{ justifyContent: 'space-evenly' }}>Rs. {deal.amount}</TableCell>
+                <TableCell style={{ justifyContent: 'space-evenly' }}>Rs. {deal.total_amount}</TableCell>
               )}
               <TableCell style={{ justifyContent: 'space-evenly', textAlign: 'center' }}>
                 <Card style={{ width: '85px', padding: '4px', ...getBgColor(deal.status) }}>

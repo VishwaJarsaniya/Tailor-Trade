@@ -5,9 +5,9 @@
         "Blouse": 1490,
         "Skirt": 1040,
         "Pants": 1360,
-        "Email": "elite@example.com",
+        "email": "elite@example.com",
         "productPriceRange": 1227.5,
-        "avg_rating": 4.7,
+        "averageRating": 4.7,
         "username": "elite_tailoring",
         "password": "securePass123",
         "mobileno": "9123456780",
@@ -17,7 +17,7 @@
         "portfolioUrl": "https://portfolio-elite.vercel.app/",
         "shopName": "Elite Tailoring",
         "location": "Mumbai",
-        "portfolioPhotos": "https://www.joshindia.com/cdn/shop/products/WhatsAppImage2023-01-31at6.24.48PM.jpg?v=1675249312",
+        "portfolioPhotos": "https://res.cloudinary.com/dhk1v7s3d/image/upload/v1718248014/uploads/WhatsAppImage2023-01-31at6.24.48PM_vriiir.jpg",
         "skills": "Sewing, Pattern Making"
       },
       {
@@ -25,9 +25,9 @@
         "Blouse": 1250,
         "Skirt": 1380,
         "Pants": 1120,
-        "Email": "perfect@example.com",
+        "email": "perfect@example.com",
         "productPriceRange": 1262.5,
-        "avg_rating": 3.5,
+        "averageRating": 3.5,
         "username": "perfect_stitch",
         "password": "stitchItUp789",
         "mobileno": "9234567891",
@@ -37,7 +37,7 @@
         "portfolioUrl": "https://portfolio-perfect.vercel.app/",
         "shopName": "Perfect Stitch",
         "location": "Delhi",
-        "portfolioPhotos": "https://www.joshindia.com/cdn/shop/products/BL1129.jpg?v=1628945555&width=533",
+        "portfolioPhotos": "https://res.cloudinary.com/dhk1v7s3d/image/upload/v1718248013/uploads/BL1129_nzhfuj.webp",
         "skills": "Sewing, Embroidery"
       },
       {
@@ -45,9 +45,9 @@
         "Blouse": 1280,
         "Skirt": 1260,
         "Pants": 1270,
-        "Email": "royal@example.com",
+        "email": "royal@example.com",
         "productPriceRange": 1235,
-        "avg_rating": 4.2,
+        "averageRating": 4.2,
         "username": "royal_tailors",
         "password": "royalTailor456",
         "mobileno": "9345678902",
@@ -57,7 +57,7 @@
         "portfolioUrl": "https://portfolio-royal.vercel.app/",
         "shopName": "Royal Tailors",
         "location": "Bengaluru",
-        "portfolioPhotos": "https://www.sumangali.co/cdn/shop/files/WhatsAppImage2023-08-08at1.43.47PM.jpg?v=1693656601&width=1445",
+        "portfolioPhotos": "https://res.cloudinary.com/dhk1v7s3d/image/upload/v1718248013/uploads/WhatsAppImage2023-08-08at1.43.47PM_ylqtmz.webp",
         "skills": "Pattern Making, Fitting"
       },
       {
@@ -65,9 +65,9 @@
         "Blouse": 1340,
         "Skirt": 1330,
         "Pants": 1440,
-        "Email": "urban@example.com",
+        "email": "urban@example.com",
         "productPriceRange": 1310,
-        "avg_rating": 4.8,
+        "averageRating": 4.8,
         "username": "urban_tailors",
         "password": "urban1234",
         "mobileno": "9456789013",
@@ -77,7 +77,7 @@
         "portfolioUrl": "https://portfolio-urban.vercel.app/",
         "shopName": "Urban Tailors",
         "location": "Hyderabad",
-        "portfolioPhotos": "https://imagescdn.vanheusenindia.com/img/app/product/6/670812-6934030.jpg?auto=format&w=390",
+        "portfolioPhotos": "https://res.cloudinary.com/dhk1v7s3d/image/upload/v1718248012/uploads/670812-6934030_qtxkma.avif",
         "skills": "Sewing, Custom Fitting"
       },
       {
@@ -85,9 +85,9 @@
         "Blouse": 1390,
         "Skirt": 1490,
         "Pants": 1090,
-        "Email": "classic@example.com",
+        "email": "classic@example.com",
         "productPriceRange": 1350,
-        "avg_rating": 3.2,
+        "averageRating": 3.2,
         "username": "classic_tailors",
         "password": "classicTailor789",
         "mobileno": "9567890124",
@@ -97,7 +97,7 @@
         "portfolioUrl": "https://portfolio-classic.vercel.app/",
         "shopName": "Classic Tailors",
         "location": "Chennai",
-        "portfolioPhotos": "https://www.joshindia.com/cdn/shop/products/2999_4.jpg?v=1627553707&width=533",
+        "portfolioPhotos": "https://res.cloudinary.com/dhk1v7s3d/image/upload/v1718248013/uploads/2999_4_nif4w1.webp",
         "skills": "Pattern Making, Sewing"
       },
       {
@@ -105,9 +105,9 @@
         "Blouse": 1110,
         "Skirt": 1430,
         "Pants": 1100,
-        "Email": "precision@example.com",
+        "email": "precision@example.com",
         "productPriceRange": 1175,
-        "avg_rating": 4.5,
+        "averageRating": 4.5,
         "username": "precision_tailors",
         "password": "precisionTailor123",
         "mobileno": "9678901235",
@@ -117,7 +117,7 @@
         "portfolioUrl": "https://portfolio-precision.vercel.app/",
         "shopName": "Precision Tailors",
         "location": "Pune",
-        "portfolioPhotos": "https://i.pinimg.com/736x/99/5a/07/995a075755507b74de02a11abaf36e79.jpg",
+        "portfolioPhotos": "https://res.cloudinary.com/dhk1v7s3d/image/upload/v1718248013/uploads/995a075755507b74de02a11abaf36e79_lfsrim.jpg",
         "skills": "Sewing, Pattern Making"
       },
       {
@@ -125,9 +125,9 @@
         "Blouse": 1050,
         "Skirt": 1060,
         "Pants": 1390,
-        "Email": "trendy@example.com",
+        "email": "trendy@example.com",
         "productPriceRange": 1222.5,
-        "avg_rating": 3.9,
+        "averageRating": 3.9,
         "username": "trendy_tailors",
         "password": "trendyTailor123",
         "mobileno": "9789012346",
@@ -137,7 +137,7 @@
         "portfolioUrl": "https://portfolio-trendy.vercel.app/",
         "shopName": "Couture Craft",
         "location": "Kolkata",
-        "portfolioPhotos": "https://imagescdn.vanheusenindia.com/img/app/product/3/39668751-13555021.jpg?auto=format&w=390",
+        "portfolioPhotos": "https://res.cloudinary.com/dhk1v7s3d/image/upload/v1718248012/uploads/39668751-13555021_pauwns.avif",
         "skills": "Embroidery, Sewing"
     },
     {
@@ -145,9 +145,9 @@
       "Blouse": 1450,
       "Skirt": 1300,
       "Pants": 1400,
-      "Email": "modern@example.com",
+      "email": "modern@example.com",
       "productPriceRange": 1297.5,
-      "avg_rating": 2.6,
+      "averageRating": 2.6,
       "username": "modern_tailors",
       "password": "modernTailor123",
       "mobileno": "9890123457",
@@ -157,7 +157,7 @@
       "portfolioUrl": "https://portfolio-modern.vercel.app/",
       "shopName": "Modern Tailors",
       "location": "Ahmedabad",
-      "portfolioPhotos": "https://www.joshindia.com/cdn/shop/products/BL1103-1950-dp051.jpg?v=1629355655&width=533",
+      "portfolioPhotos": "https://res.cloudinary.com/dhk1v7s3d/image/upload/v1718248013/uploads/BL1103-1950-dp051_ltp5yz.webp",
       "skills": "Pattern Making, Sewing"
     }
 ]

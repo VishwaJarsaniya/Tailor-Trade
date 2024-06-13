@@ -23,7 +23,7 @@ const LoginUser=()=> {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-             response = await axiosInstance.post('http://localhost:8080/user/login', { email, password });
+             response = await axiosInstance.post('https://tailortradebackendweb.onrender.com/user/login', { email, password });
             console.log(response);
             const { accessToken } = response.data;
             setAuthInfo({accessToken});

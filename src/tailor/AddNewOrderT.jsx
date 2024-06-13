@@ -7,7 +7,7 @@ import AddNewOrder2 from "./AddNewOrder2";
 import Theme from "../Theme";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
-const AddNewOrder = () => {
+const AddNewOrderT = () => {
     const isLargeScreen = useMediaQuery(Theme.breakpoints.up('lg'));
     
     const [formData1, setFormData1] = useState({
@@ -94,4 +94,4 @@ const AddNewOrder = () => {
     );
 }
 
-export default AddNewOrder;
+export default AddNewOrderT;
