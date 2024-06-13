@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Card, CardContent, Grid, Typography, Box, Radio, RadioGroup, Button,FormControlLabel, FormControl, FormLabel, TextField, TextareaAutosize, Switch } from "@mui/material";
+import { Card, CardContent, Grid, Typography, Box, Radio, RadioGroup, Link,Button,FormControlLabel, FormControl, FormLabel, TextField, TextareaAutosize, Switch } from "@mui/material";
 import SideBarNav from "./SideBarNav";
 import Nav from "../Nav";
 import skirt from "../img/Skirt.png"
@@ -8,40 +8,153 @@ import dress from "../img/Dress.png"
 import blouse from "../img/Blause.png"
 import Theme from "../Theme";
 import useMediaQuery from '@mui/material/useMediaQuery';
+import { useAuth } from '../context/AuthContext';
+import { useNavigate } from "react-router-dom";
 
-function AddNewOrder2() {
+const AddNewOrder2=({formData ,formData1,onBack,onChange})=> {
     const isLargeScreen = useMediaQuery(Theme.breakpoints.up('lg'))
+    // console.log(formData1);
+    const navigate=useNavigate();
+    const { authState, logout } = useAuth();
+    const [amount, setAmount] = useState(0);
+    const [tailor,setTailor]=useState(null);
+    const [urgentNeed, setUrgentNeed] = useState(false);
+    
 
+    // if (!authState.isAuthenticated) {
+    //     return (
+    //         <>
+    //             <h1>Please Login To view this page</h1>
+    //             <Button><Link href="/tailor/login">Login</Link></Button>
+    //         </>
+    //     );
+    // }
 
-    const handleClick = (outfitType) => {
-        console.log(`Clicked on ${outfitType}`);
+    
+    const handleRadioChange = (e) => {
+        onChange(e);
     };
 
-    const [urgent, setUrgent] = useState(false);
+    const handleClick = async (outfitType) => {
+        try {
+            const response = await fetch('http://localhost:8080/tailor/getTailorByEmail', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email: authState.email }),
+            });
+            const result = await response.json();
+            setTailor(result);
+            onChange({
+                target: {
+                    name: 'outfit_type',
+                    value: outfitType
+                }
+            });
+            setAmount(result[outfitType]);
+
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    };
 
     const handleUrgentChange = (event) => {
-        setUrgent(event.target.checked);
+        setUrgentNeed(event.target.checked);
+        onChange({
+            target: {
+                name: 'urgent',
+                value: event.target.checked
+            }
+        });
+        
     };
+
+   const handleSubmit = async (e) => {
+    e.preventDefault();
+    console.log(tailor);
+    console.log(formData1);
+    formData.urgent=urgentNeed;
+    formData.total_amount=amount;
+    let client;
+
+    
+    try {
+
+        const response = await fetch('http://localhost:8080/client/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData1),
+        });
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error response:', errorText);
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        client = await response.json();
+        console.log("Backend response:", client);
+    } catch (e) {
+        console.log("Error Creating client", e);
+    }
+    const dataToSubmit = { tailor,...formData,client };
+    console.log("Submitting data:", dataToSubmit);
+    e.preventDefault();
+        
+if(client){
+    try {
+        const response = await fetch('http://localhost:8080/order/orders', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(dataToSubmit),
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            console.error('Error response:', errorText);
+            throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const result = await response.json();
+        console.log("Backend response:", result);
+        if (result.success === true) {
+            const paymentInfo={
+                outfit_type:formData.outfit_type,
+                total_amount:amount,
+                first_name:formData.first_name,
+                type:formData.type
+            }
+            try{
+                const payment=await fetch("http://localhost:8080/payment/checkout",{
+                    method:"POST",
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(paymentInfo),
+                })
+                console.log(payment)
+                const Paymentresult=await payment.json();
+                console.log(Paymentresult);
+                if(Paymentresult.url){
+                    window.location=Paymentresult.url
+                }
+            }catch(e){
+                console.log("Payment Error",e);
+            }
+        }
+    } catch (e) {
+        console.log("Error Sending Data to Backend:", e);
+    }
+}
+}
     return (
         <div style={{ overflowY: 'auto' }}>
-            <CardContent style={{ padding: '0px' }}>
-                <Grid container>
-                {isLargeScreen && ( 
-                <Grid item style={{width:'20%' }}>
-                    <Card style={{height:'780px'}}>
-                        <SideBarNav />
-                    </Card>
-                    </Grid>
-                )}
-
-                    <Card sx={{width:{xxs:'100%',lg:'80%'}, height: '100%', backgroundColor: '#f5f8fe' }}>
-                        <Grid item>
-                            <Nav />
-                            <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '20px', textAlign: 'left', marginLeft: '30px', marginBottom: '30px' }}>Add New Orders</Typography>
-
-
-
                             {/*The main card */}
+                            <form onSubmit={handleSubmit}>
                             <Card
                                 sx={{
                                     width: '95%',
@@ -155,12 +268,14 @@ function AddNewOrder2() {
                                                 <Typography variant="body1">Type</Typography>
                                                 <RadioGroup
                                                     aria-label="options"
-                                                    defaultValue="option1"
-                                                    name="radio-buttons-group"
+                                                    // defaultValue="option1"
+                                                    name="type"
+                                                    value={formData.type}
+                                                    onChange={handleRadioChange}
                                                     sx={{ textAlign: 'left' }}
                                                 >
-                                                    <FormControlLabel value="option1" control={<Radio />} label="Stitching" />
-                                                    <FormControlLabel value="option2" control={<Radio />} label="Alteration" />
+                                                    <FormControlLabel value="Stitching" control={<Radio />} label="Stitching" />
+                                                    <FormControlLabel value="Alteration" control={<Radio />} label="Alteration" />
                                                 </RadioGroup>
                                             </FormControl>
 
@@ -170,6 +285,10 @@ function AddNewOrder2() {
                                                     fullWidth
                                                     label="Height"
                                                     variant="outlined"
+                                                    name="height"
+                                                    value={formData.height}
+                                                    onChange={onChange}
+                                                    
                                                     type="number"
                                                     sx={{ marginBottom: '10px', marginTop: '10px' }}
                                                 />
@@ -177,6 +296,9 @@ function AddNewOrder2() {
                                                     fullWidth
                                                     label="Width"
                                                     variant="outlined"
+                                                    name="width"
+                                                    onChange={onChange}
+                                                    value={formData.width}
                                                     type="number"
                                                 />
                                             </Box>
@@ -187,6 +309,9 @@ function AddNewOrder2() {
                                                     fullWidth
                                                     label="Enter any special instructions here..."
                                                     variant="outlined"
+                                                    name="instructions"
+                                                    value={formData.instructions}
+                                                    onChange={onChange}
                                                     multiline
                                                     rows={4}
                                                     sx={{ marginTop: '10px' }}
@@ -196,7 +321,9 @@ function AddNewOrder2() {
                                             <Box sx={{ marginTop: '20px', display: 'flex', alignItems: 'center' }}>
                                                 <Typography variant="body1">Mark as urgent</Typography>
                                                 <Switch
-                                                    checked={urgent}
+                                                    checked={urgentNeed}
+                                                    name="urgent"
+                                                    value={formData.urgent}
                                                     onChange={handleUrgentChange}
                                                     color="primary"
                                                     sx={{ marginLeft: '10px' }}
@@ -205,32 +332,53 @@ function AddNewOrder2() {
                                         </Box>
                                         {/* FORM Right */}
                                         <Box sx={{ width: '50%', padding: '20px', textAlign: 'left' }}>
+                                        <Typography variant="body1">Product Name</Typography>
+                                                <TextField
+                                                    fullWidth
+                                                    label="Enter Product Name"
+                                                    name="product_name"
+                                                    variant="outlined"
+                                                    type="text"
+                                                    value={formData.product_name}
+                                                    onChange={onChange}
+                                                    
+                                                    sx={{ marginBottom: '10px', marginTop: '10px' }}
+                                                />
+                                                
                                             <Typography variant="body1">Dates</Typography>
-                                            <TextField
-                                                fullWidth
-                                                label="Start Date"
-                                                type="date"
-                                                InputLabelProps={{ shrink: true }}
-                                                sx={{ marginBottom: '20px', marginTop: '10px' }}
-                                            />
-                                            <TextField
-                                                fullWidth
-                                                label="End Date"
-                                                type="date"
-                                                InputLabelProps={{ shrink: true }}
-                                                sx={{ marginBottom: '20px' }}
-                                            />
-                                            <Button type="submit" variant="contained" color="primary">
-                                                Submit
-                                            </Button>
+                                                <TextField
+                                                    fullWidth
+                                                    label="Trial Date"
+                                                    type="date"
+                                                    name="trial_date"
+                                                    onChange={onChange}
+                                                    value={formData.trial_date}
+                                                    InputLabelProps={{ shrink: true }}
+                                                    sx={{ marginBottom: '20px', marginTop: '10px' }}
+                                                />
+                                                <TextField
+                                                    fullWidth
+                                                    label="Delivery Date"
+                                                    type="date"
+                                                    name="delivery_date"
+                                                    onChange={onChange}
+                                                    value={formData.delivery_date}
+                                                    InputLabelProps={{ shrink: true }}
+                                                    sx={{ marginBottom: '20px', marginTop: '10px' }}
+                                                />
+                                                <Typography variant="body1">AMOUNT = {amount}</Typography>
+                                                {/* <Button variant="contained" onClick={onBack} color="primary" sx={{ marginTop: '10px' }}> Back </Button>
+                                                <Button variant="contained" type="submit" color="primary" sx={{ marginTop: '10px' }}>
+                                                    Submit
+                                                </Button> */}
+                                                <Button onClick={onBack} sx={{backgroundColor:'#90c8c9',color:'#000',marginTop:'15px',marginRight:'10px',height:'36px',width:{xxs:'180px',xs:'250px'}}}>Back</Button>
+                                                <Button sx={{backgroundColor:'#90c8c9',color:'#000',marginTop:'15px',height:'36px',width:{xxs:'180px',xs:'250px'}}} type="submit">Submit</Button>
                                         </Box>
                                     </Box>
                                 </CardContent>
                             </Card>
-                        </Grid>
-                    </Card>
-                </Grid>
-            </CardContent>
+                            </form>
+                        
         </div>
     );
 };

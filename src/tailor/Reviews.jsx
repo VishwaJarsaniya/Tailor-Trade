@@ -24,7 +24,7 @@ function Reviews() {
     useEffect(() => {
         const fetchReviews = async () => {
             try {
-                const response = await fetch("https://tailortradebackendweb.onrender.com/review/reviews", {
+                const response = await fetch("http://localhost:8080/review/reviews", {
                     method: "GET",
                 });
                 const result = await response.json();
@@ -38,14 +38,14 @@ function Reviews() {
         fetchReviews();
     }, []);
 
-    if (!authState.isAuthenticated) {
-        return (
-            <div>
-                <h1>Please Login To view this page</h1>
-                <Button href="/tailor/login">Login</Button>
-            </div>
-        );
-    }
+    // if (!authState.isAuthenticated) {
+    //     return (
+    //         <div>
+    //             <h1>Please Login To view this page</h1>
+    //             <Button href="/tailor/login">Login</Button>
+    //         </div>
+    //     );
+    // }
 
     return (
         <div style={{ overflowY: 'auto' }}>

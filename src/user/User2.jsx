@@ -5,14 +5,16 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import bell from "../img/bell.png";
 import profile from "../img/profile.png";
 import menu from "../img/menu.png";
-import couturecraft from "../img/couturecraft.jpg";
+import couturecraft from "../img/2star.jpg";
 import stars from "../img/stars.png";
-import Nav from "../tailor/Nav";
-import pp from "../img/woman.png";
+import Nav from "../Nav";
+import pp from "../img/1star.jpg";
+import { useNavigate } from "react-router-dom";
 import Theme from "../Theme"
 
-function User2() {
-
+const User2=()=> {
+    
+    const navigate = useNavigate();
     const isLargeScreen = useMediaQuery(Theme.breakpoints.up('lg'))
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 

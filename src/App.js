@@ -12,6 +12,8 @@ import SignUpUser from './user/SignUpUser';
 import AddNewOrder1 from './tailor/AddNewOrder1';
 import AddNewOrder2 from './tailor/AddNewOrder2';
 import TrackOrders from './tailor/TrackOrders';
+import User2 from './user/User2';
+import AddNewOrder from './tailor/AddNewOrder';
 
 function App() {
   return (
@@ -25,8 +27,9 @@ function App() {
             <Route path="/tailor/signup" element={<SignUpTailor/>} />
             <Route path="/user/login" element={<LoginUser/>} />
             <Route path="/user/signup" element={<SignUpUser/>} />
-
+            <Route path="/user" element={<User2/>}/>
             <Route path="/tailor/Dashboard" element={<Dashboard />} />
+            <Route path="/tailor/AddNewOrder" element={<AddNewOrder />} />
             <Route path="/tailor/AddNewOrder1" element={<AddNewOrder1 />} />
             <Route path="/tailor/AddNewOrder2" element={<AddNewOrder2 />} />
             <Route path="/tailor/Reviews" element={<Reviews />} />

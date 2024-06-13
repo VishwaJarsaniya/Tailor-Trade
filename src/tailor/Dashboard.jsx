@@ -18,17 +18,17 @@ import Theme from "../Theme";
 function Dashboard() {
 
     const isLargeScreen = useMediaQuery(Theme.breakpoints.up('lg'));
-
+    
     const { authState, logout } = useAuth();
 
-    if (!authState.isAuthenticated) {
-        return (
-            <>
-                <h1>Please Login To view this page</h1>
-                <Button><Link href="/tailor/login">Login</Link></Button>
-            </>
-        );
-    }
+    // if (!authState.isAuthenticated) {
+    //     return (
+    //         <>
+    //             <h1>Please Login To view this page</h1>
+    //             <Button><Link href="/tailor/login">Login</Link></Button>
+    //         </>
+    //     );
+    // }
 
     return (
         <div style={{ overflowY: 'auto' }}>

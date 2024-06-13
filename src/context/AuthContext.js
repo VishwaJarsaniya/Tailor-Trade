@@ -6,13 +6,15 @@ export const AuthProvider = ({ children }) => {
     const [authState, setAuthState] = useState({
         isAuthenticated: false,
         accessToken: null,
+        email:null
     });
 
-    const setAuthInfo = ({ accessToken }) => {
+    const setAuthInfo = ({ accessToken },email) => {
         sessionStorage.setItem('accessToken', accessToken);
         setAuthState({
             isAuthenticated: !!accessToken,
             accessToken,
+            email
         });
     };
 
