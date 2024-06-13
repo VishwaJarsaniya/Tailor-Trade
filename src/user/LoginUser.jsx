@@ -40,7 +40,7 @@ const LoginUser=()=> {
             console.log("Auth State Updated", authState);
             const currentToken = sessionStorage.getItem('accessToken');
             console.log(currentToken);
-            navigate(`/user`);
+            navigate(`/user/UserPage1`);
         }
     }, [authState, navigate]);
 

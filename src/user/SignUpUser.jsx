@@ -182,7 +182,7 @@ const SignUpUser=()=> {
                             <Button sx={{ mt: 1 }} type="submit">SignUp</Button>
                             </form>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>
-                                Tou already have an account?
+                                Already have an account?
                                 <Link href="/user/login">Log in</Link>
                             </Typography>
                             <Typography fontSize="body2" sx={{ alignSelf: 'center' }}>

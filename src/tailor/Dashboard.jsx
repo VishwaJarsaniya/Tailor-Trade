@@ -35,18 +35,18 @@ function Dashboard() {
             <CardContent style={{ padding: '0px' }}>
                 <Grid container>
                     {isLargeScreen && (
-                        <Grid item lg={2}>
+                        <Grid item lg={2.4}>
                             <SideBarNav />
                         </Grid>
                     )}
-                    <Grid item lg={isLargeScreen ? 10 : 12}>
+                    <Grid item lg={isLargeScreen ? 9.6 : 12}>
                     <Card style={{width:'100%',height:'100%', backgroundColor:'#f5f8fe'}}>
                         <Nav />
                         <Typography style={{ fontSize: '210%', fontWeight: 700, marginTop: '20px', textAlign: 'left', marginLeft: '30px', marginBottom: '30px' }}>Dashboard</Typography>
                         
                         <Grid container spacing={1} style={{marginLeft:'25px',marginRight:'25px'}}>
-                            <Grid item xxs={12} sm={5.6} md={2.85}>
-                                <Card style={{ borderRadius: '15px',width:'100%' }}>
+                            <Grid item xxs={10} sm={5.6} md={2.85}>
+                                <Card style={{ borderRadius: '15px' }}>
                                    <CardContent>
                             <div style={{display:"flex",flexDirection:'row',justifyContent:'space-between'}}>
                             <div>
@@ -72,8 +72,8 @@ function Dashboard() {
                         </CardContent>
                                 </Card>
                             </Grid>
-                            <Grid item xxs={12} sm={5.6} md={2.85}>
-                                <Card style={{ borderRadius: '15px' ,width:'100%' }}>
+                            <Grid item xxs={10} sm={5.6} md={2.85}>
+                                <Card style={{ borderRadius: '15px' }}>
                                 <CardContent>
                             <div style={{display:"flex",flexDirection:'row',justifyContent:'space-between'}}>
                             <div>
@@ -101,8 +101,8 @@ function Dashboard() {
                             </Grid>
 
 
-                            <Grid item xxs={12} sm={5.6} md={2.85}>
-                                <Card style={{ borderRadius: '15px',width:'100%'  }}>
+                            <Grid item xxs={10} sm={5.6} md={2.85}>
+                                <Card style={{ borderRadius: '15px'  }}>
                                 <CardContent>
                             <div style={{display:"flex",flexDirection:'row',justifyContent:'space-between'}}>
                             <div>
@@ -130,8 +130,8 @@ function Dashboard() {
                             </Grid>
 
 
-                            <Grid item xxs={12} sm={5.6} md={2.85}>
-                                <Card style={{ borderRadius: '15px',width:'100%' }}>
+                            <Grid item xxs={10} sm={5.6} md={2.85}>
+                                <Card style={{ borderRadius: '15px' }}>
                                     <CardContent>
                                     <div style={{display:"flex",flexDirection:'row',justifyContent:'space-between',paddingBottom:'12px'}}>
                             <div>
@@ -150,20 +150,22 @@ function Dashboard() {
                         </Grid>
 
                         {/* Sales Details */}
-                        <Card style={{ width: '95%', borderRadius: '15px', marginLeft: '35px', marginTop: '35px' }}>
+                        <Card style={{ width: '95%', borderRadius: '15px', marginLeft: '35px', marginTop: '35px',marginBottom: '40px' }}>
                             <CardContent>
                                 <Typography style={{ textAlign: 'left', fontSize: '145%', fontWeight: 600, marginTop: '5px', marginLeft: '10px' }}>Sales Details</Typography>
                                 <img src={graph} style={{ width: '90%' }} />
                             </CardContent>
                         </Card>
-
-                        {/* Deals Details */}
+                        
+                        {/*     
+                        //Deal details
                         <Card style={{ width: '95%', borderRadius: '15px', marginLeft: '2.4%', marginTop: '35px', marginBottom: '40px' }}>
                             <CardContent>
                                 <Typography style={{ textAlign: 'left', fontSize: '145%', fontWeight: 600, marginTop: '5px', marginLeft: '10px', marginBottom: '20px' }}>Deals Details</Typography>
                                 <DealsDetails />
                             </CardContent>
-                        </Card>
+                        </Card> */}
+                        
                         </Card>
                     </Grid>
                 </Grid>

@@ -5,17 +5,16 @@ import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import bell from "../img/bell.png";
 import profile from "../img/profile.png";
 import menu from "../img/menu.png";
-import couturecraft from "../img/2star.jpg";
+import couturecraft from "../img/couturecraft.jpg";
 import stars from "../img/stars.png";
 import Nav from "../Nav";
-import pp from "../img/1star.jpg";
-import { useNavigate } from "react-router-dom";
+import pp from "../img/woman.png";
 import Theme from "../Theme"
+import { Link } from "react-router-dom";
 
-const User2=()=> {
-    
-    const navigate = useNavigate();
-    const isLargeScreen = useMediaQuery(Theme.breakpoints.up('lg'))
+function UserPage2() {
+
+    const isLargeScreen = useMediaQuery(Theme.breakpoints.up('sm'))
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
     const handleMenuClick = () => {
@@ -26,14 +25,14 @@ const User2=()=> {
          <div>
             {/*Navbar */}
             {isLargeScreen ? ( 
-            <Box style={{borderRadius:'2px',borderColor:'grey', backgroundColor:'#f7fcfe', height:'80px'}}>
+            <Box style={{borderRadius:'2px',borderColor:'grey', backgroundColor:'#f0f8ff', height:'80px'}}>
                 <CardContent>
                 <div style={{justifyContent:'space-between',display:'flex'}}>
                 <div>
                 <img src={logo} style={{ width: '170px' ,marginLeft:'40px', marginBottom: '10px',marginTop:'-20px'}} />
                 </div>
                 <div>
-                    <Button style={{width:'150px'}}><Typography style={{fontSize:'15px'}}>Home</Typography></Button>
+                    <Button style={{width:'130px'}}><Typography style={{fontSize:'15px'}}>Home</Typography></Button>
                     <Button><img src={bell} style={{width:'20px'}} /></Button>
                     <Button><img src={profile} style={{width:'25px',marginRight:'6px'}}/><Typography style={{fontSize:'15px'}}>Me</Typography></Button>
                 </div>
@@ -42,7 +41,7 @@ const User2=()=> {
             </Box>
 
             ) : (
-            <Box style={{borderRadius:'0.2px',borderColor:'grey', backgroundColor:'#f7fcfe', height:'70px'}}>
+            <Box style={{borderRadius:'0.2px',borderColor:'grey', backgroundColor:'#f0f8ff', height:'70px'}}>
                 <CardContent>
                 <Grid container justifyContent="space-between">
                 <Grid item>
@@ -67,7 +66,7 @@ const User2=()=> {
            {/*Image and Description+Buttons Grid */}
            <Card style={{width:'100%',height:'100%'}}>
                 <CardContent style={{marginLeft:'3.5%',marginRight:'3.5%'}}>
-                        <Typography style={{fontSize:'210%',fontWeight:700,marginTop:'20px',textAlign:'left', marginBottom:'30px',fontFamily:'"Noto Serif", serif'}}>CoutureCraft</Typography>
+                        <Typography style={{fontSize:'210%',fontWeight:700,marginTop:'20px',textAlign:'left', marginBottom:'30px'}}>CoutureCraft</Typography>
                 
                 <Grid container>
                      <Grid item md={12} lg={7}>
@@ -78,7 +77,7 @@ const User2=()=> {
                     
                         <Box sx={{marginTop:{xxs:'45px',lg:'15%'}}}>
                             <Typography style={{fontSize:'120%',fontWeight:500}}>Average price: $32</Typography>
-                            <Button sx={{backgroundColor:'#90c8c9',color:'#fff',marginTop:'15px',height:'36px',width:{xxs:'280px',xs:'350px'}}}><Typography style={{textTransform:'none'}}>Add Order</Typography></Button>
+                            <Link to="/user/AddNewOrder" ><Button sx={{backgroundColor:'#90c8c9',color:'#fff',marginTop:'15px',height:'36px',width:{xxs:'280px',xs:'350px'}}}><Typography style={{textTransform:'none'}}>Add Order</Typography></Button></Link>
                             <br />
                             <Button  sx={{backgroundColor:'#f7fcfe',color:'#90c8c9',marginTop:'15px',height:'35px',width:{xxs:'280px',xs:'350px'},borderColor:'#90c8c9',border:'2px solid'}}><Typography style={{textTransform:'none'}}>Schedule an Appointment</Typography></Button>
                        
@@ -188,4 +187,4 @@ const User2=()=> {
 
 };
 
-export default User2;
+export default UserPage2;
