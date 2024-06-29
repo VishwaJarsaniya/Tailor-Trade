@@ -4,7 +4,7 @@ import axios from 'axios';
 const role = sessionStorage.getItem('role');  
 
 const axiosInstance = axios.create({
-    baseURL: `https://tailortradebackendweb.onrender.com/${role}`
+    baseURL: `http://localhost:8080/${role}`
 });
   
 
@@ -31,7 +31,7 @@ axiosInstance.interceptors.response.use(
             originalRequest._retry = true;
             // Attempt to refresh token using endpoint that expects refresh token from HttpOnly cookie
             
-            return axiosInstance.post(`https://tailortradebackendweb.onrender.com/${role}/refresh`)
+            return axiosInstance.post(`http://localhost:8080/${role}/refresh`)
                 .then(res => {
                     if (res.status === 200) {
                         // Save new access token in sessionStorage

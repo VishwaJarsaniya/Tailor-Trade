@@ -18,16 +18,17 @@ export const AuthProvider = ({ children }) => {
         });
     };
 
-    // const logout = () => {
-    //     sessionStorage.removeItem('accessToken');
-    //     setAuthState({
-    //         isAuthenticated: false,
-    //         accessToken: null,
-    //     });
-    // };
+    const logout = () => {
+        sessionStorage.removeItem('accessToken');
+        setAuthState({
+            isAuthenticated: false,
+            accessToken: null,
+            email:null
+        });
+    };
 
     return (
-        <AuthContext.Provider value={{ authState, setAuthInfo}}>
+        <AuthContext.Provider value={{ authState, setAuthInfo,logout}}>
             {children}
         </AuthContext.Provider>
     );

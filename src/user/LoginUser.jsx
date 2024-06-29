@@ -11,23 +11,33 @@ import Theme from '../Theme'; // Import your custom theme
 import { Button, Typography, FormControl, FormLabel, Input, Link } from "@mui/material";
 import user1 from '../img/user1.png';
 import { useNavigate } from 'react-router-dom';
+import LoadingSpinner from '../LoadingSpinner';
 import { AuthProvider, useAuth } from '../context/AuthContext';
+import { UserProvider,useUser } from '../context/UserContext';
 
 const LoginUser=()=> {
     const { authState, setAuthInfo } = useAuth();
+    const {username,setUsername}=useUser();
     const navigate = useNavigate();
+    const [isLoading,setIsLoading]=useState(false)
     const [email, setEmail] = useState('');
+    const [_ID,setID]=useState("");
     const [password, setPassword] = useState('');
-  
+    
     let response =null;
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-             response = await axiosInstance.post('https://tailortradebackendweb.onrender.com/user/login', { email, password });
-            console.log(response);
+             response = await axiosInstance.post('http://localhost:8080/user/login', { email, password });
+                console.log(response);
+
+            if(response.data=="Incorrect"){
+                alert("Invalid Username/Password")
+            }
             const { accessToken } = response.data;
-            setAuthInfo({accessToken});
-            
+            setUsername(response.data.u2.username);
+            setAuthInfo({accessToken},email);
+            setID(response.data.u2._id);
 
            
         } catch (error) {
@@ -40,10 +50,14 @@ const LoginUser=()=> {
             console.log("Auth State Updated", authState);
             const currentToken = sessionStorage.getItem('accessToken');
             console.log(currentToken);
-            navigate(`/user/UserPage1`);
+            if(_ID!=null){
+                navigate(`/user/${_ID}`);
+            }
         }
     }, [authState, navigate]);
-
+    if(isLoading){
+        return <LoadingSpinner/>
+    }
     return (
         <ThemeProvider theme={Theme}>
             <Box sx={{

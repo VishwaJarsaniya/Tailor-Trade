@@ -9,17 +9,23 @@ import stars from "../img/stars.png";
 import Nav from "../Nav";
 import pp from "../img/woman.png";
 import Theme from "../Theme";
+import { useAuth } from "../context/AuthContext";
+import LoadingSpinner from "../LoadingSpinner";
+
 import { Link, useParams } from "react-router-dom";
+import NavBar1 from "./navBar";
 
 function UserPage2() {
     const { _id } = useParams();
     console.log(_id);
+    const { authState, logout } = useAuth();
     const [tailor, setTailor] = useState([]);
+    const [isLoading, setIsLoading] = useState(true);
     
     useEffect(() => {
         const fetchTailors = async () => {
             try {
-                const response = await fetch(`https://tailortradebackendweb.onrender.com/tailor/${_id}`, {
+                const response = await fetch(`http://localhost:8080/tailor/${_id}`, {
                     method: "GET"
                 });
                 if (!response.ok) throw Error('Did not receive expected data');
@@ -32,54 +38,23 @@ function UserPage2() {
         }
         fetchTailors();
     }, [_id]);
-
-    const isLargeScreen = useMediaQuery(Theme.breakpoints.up('sm'));
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-    const handleMenuClick = () => {
-        setIsMenuOpen(!isMenuOpen);
+    if(isLoading){
+        return <LoadingSpinner/>
+      }
+      if (!authState.isAuthenticated) {
+        return (
+            <>
+                <h1>Please Login To view this page</h1>
+                <Button>
+                  <Link href="/user/login">Login</Link>
+                </Button>
+            </>
+        );
     }
 
     return (
         <div>
-            {/*Navbar */}
-            {isLargeScreen ? (
-                <Box style={{ borderRadius: '2px', borderColor: 'grey', backgroundColor: '#f0f8ff', height: '80px' }}>
-                    <CardContent>
-                        <div style={{ justifyContent: 'space-between', display: 'flex' }}>
-                            <div>
-                                <img src={logo} style={{ width: '170px', marginLeft: '40px', marginBottom: '10px', marginTop: '-20px' }} />
-                            </div>
-                            <div>
-                                <Button style={{ width: '130px' }}><Typography style={{ fontSize: '15px' }}>Home</Typography></Button>
-                                <Button><img src={bell} style={{ width: '20px' }} /></Button>
-                                <Button><img src={profile} style={{ width: '25px', marginRight: '6px' }} /><Typography style={{ fontSize: '15px' }}>Me</Typography></Button>
-                            </div>
-                        </div>
-                    </CardContent>
-                </Box>
-            ) : (
-                <Box style={{ borderRadius: '0.2px', borderColor: 'grey', backgroundColor: '#f0f8ff', height: '70px' }}>
-                    <CardContent>
-                        <Grid container justifyContent="space-between">
-                            <Grid item>
-                                <Button onClick={handleMenuClick}><img src={menu} style={{ width: '20px' }} /></Button>
-                                {isMenuOpen && (
-                                    <Card style={{ position: 'absolute', top: '70px', left: 0, width: '290px', height: 'auto', zIndex: 999, backgroundColor: "#fff" }}>
-                                        <Grid item>
-                                            <Nav />
-                                        </Grid>
-                                    </Card>
-                                )}
-                            </Grid>
-                            <Grid item>
-                                <Button><img src={bell} style={{ width: '20px' }} /></Button>
-                                <Button><img src={profile} style={{ width: '25px', marginRight: '6px' }} /><Typography style={{ fontSize: '15px' }}>Me</Typography></Button>
-                            </Grid>
-                        </Grid>
-                    </CardContent>
-                </Box>
-            )}
+            <NavBar1/>
             {tailor.map((details) => (
                 <Card key={details._id} style={{ width: '100%', height: '100%' }}>
                     <CardContent style={{ marginLeft: '3.5%', marginRight: '3.5%' }}>
@@ -94,7 +69,7 @@ function UserPage2() {
                                 </Typography>
                                 <Box sx={{ marginTop: { xxs: '45px', lg: '15%' } }}>
                                     <Typography style={{ fontSize: '120%', fontWeight: 500 }}>Average price: $32</Typography>
-                                    <Link to="/user/AddNewOrder" >
+                                    <Link to='AddNewOrder' >
                                         <Button sx={{ backgroundColor: '#90c8c9', color: '#fff', marginTop: '15px', height: '36px', width: { xxs: '280px', xs: '350px' } }}>
                                             <Typography style={{ textTransform: 'none' }}>Add Order</Typography>
                                         </Button>

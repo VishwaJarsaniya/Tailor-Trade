@@ -20,7 +20,7 @@ const SignUpUser=()=> {
         e.preventDefault();
         console.log(formData);
         try{
-            const response=await fetch('https://tailortradebackendweb.onrender.com/user/signup',{
+            const response=await fetch('http://localhost:8080/user/signup',{
                 method:'POST',
                 headers: {
                     'Content-Type': 'application/json', // Set the Content-Type header
@@ -28,7 +28,7 @@ const SignUpUser=()=> {
                 body:JSON.stringify(formData),
             });
             const result = await response.json();
-            console.log(result.success);
+            console.log(result);
             if(result.success===true){
                 navigate("/user/login");
             }

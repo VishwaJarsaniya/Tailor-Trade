@@ -26,7 +26,7 @@ export default function DealsDetails() {
   useEffect(() => {
     const fetchOrders = async () => {
       try {
-        const response = await fetch("https://tailortradebackendweb.onrender.com/order/orders", {
+        const response = await fetch("http://localhost:8080/order/orders", {
           method: "GET",
         });
         const result = await response.json();
@@ -43,7 +43,7 @@ export default function DealsDetails() {
     const fetchClients = async () => {
       const clientsPromises = orders.map(async (order) => {
         try {
-          const clientResponse = await fetch(`https://tailortradebackendweb.onrender.com/client/orders/${order.client}`, {
+          const clientResponse = await fetch(`http://localhost:8080/client/orders/${order.client}`, {
             method: "GET",
           });
           const clientData = await clientResponse.json();

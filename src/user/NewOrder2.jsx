@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Card, CardContent, Grid, Typography, Box, Radio, RadioGroup, Link,Button,FormControlLabel, FormControl, FormLabel, TextField, TextareaAutosize, Switch } from "@mui/material";
-import SideBarNav from "./SideBarNav";
 import Nav from "../Nav";
 import skirt from "../img/Skirt.png"
 import pants from "../img/Pants.png"
@@ -10,16 +9,18 @@ import Theme from "../Theme";
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
-const AddNewOrder2=({formData ,formData1,onBack,onChange})=> {
+const NewOrder2=({formData ,formData1,onBack,onChange})=> {
     const isLargeScreen = useMediaQuery(Theme.breakpoints.up('lg'))
     // console.log(formData1);
+    const { _id } = useParams();
+    console.log(_id);
     const navigate=useNavigate();
     const { authState, logout } = useAuth();
     const [amount, setAmount] = useState(0);
     const [tailor,setTailor]=useState(null);
     const [urgentNeed, setUrgentNeed] = useState(false);
-    
 
     // if (!authState.isAuthenticated) {
     //     return (
@@ -37,12 +38,8 @@ const AddNewOrder2=({formData ,formData1,onBack,onChange})=> {
 
     const handleClick = async (outfitType) => {
         try {
-            const response = await fetch('http://localhost:8080/tailor/getTailorByEmail', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email: authState.email }),
+            const response = await fetch(`http://localhost:8080/tailor/${_id}`, {
+                method: 'GET'
             });
             const result = await response.json();
             setTailor(result);
@@ -76,17 +73,17 @@ const AddNewOrder2=({formData ,formData1,onBack,onChange})=> {
     console.log(formData1);
     formData.urgent=urgentNeed;
     formData.total_amount=amount;
-    let client;
+    let user;
 
     
     try {
 
-        const response = await fetch('http://localhost:8080/client/orders', {
-            method: 'POST',
+        const response = await fetch('http://localhost:8080/user/update', {
+            method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formData1),
+            body:JSON.stringify({formData1}),
         });
         if (!response.ok) {
             const errorText = await response.text();
@@ -94,16 +91,16 @@ const AddNewOrder2=({formData ,formData1,onBack,onChange})=> {
             throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        client = await response.json();
-        console.log("Backend response:", client);
+        user = await response.json();
+        console.log("Backend response:", user);
     } catch (e) {
-        console.log("Error Creating client", e);
+        console.log("Error Creating User", e);
     }
-    const dataToSubmit = { tailor,...formData,client };
+    const dataToSubmit = { tailor,...formData,user };
     console.log("Submitting data:", dataToSubmit);
     e.preventDefault();
         
-if(client){
+if(user){
     try {
         const response = await fetch('http://localhost:8080/order/orders', {
             method: 'POST',
@@ -157,9 +154,9 @@ if(client){
                             <form onSubmit={handleSubmit}>
                             <Card
                                 sx={{
-                                    width: '95%',
+                                    width: '90%',
                                     borderRadius: '15px',
-                                    marginLeft: '2.4%',
+                                    marginLeft: '5%',
                                     marginTop: '35px',
                                     marginBottom: '35px'
                                 }}
@@ -288,7 +285,6 @@ if(client){
                                                     name="height"
                                                     value={formData.height}
                                                     onChange={onChange}
-                                                    
                                                     type="number"
                                                     sx={{ marginBottom: '10px', marginTop: '10px' }}
                                                 />
@@ -367,10 +363,7 @@ if(client){
                                                     sx={{ marginBottom: '20px', marginTop: '10px' }}
                                                 />
                                                 <Typography variant="body1">AMOUNT = {amount}</Typography>
-                                                {/* <Button variant="contained" onClick={onBack} color="primary" sx={{ marginTop: '10px' }}> Back </Button>
-                                                <Button variant="contained" type="submit" color="primary" sx={{ marginTop: '10px' }}>
-                                                    Submit
-                                                </Button> */}
+                                                
                                                 <Button onClick={onBack} sx={{backgroundColor:'#90c8c9',color:'#000',marginTop:'15px',marginRight:'10px',height:'36px',width:{xxs:'180px',xs:'250px'}}}>Back</Button>
                                                 <Button sx={{backgroundColor:'#90c8c9',color:'#000',marginTop:'15px',height:'36px',width:{xxs:'180px',xs:'250px'}}} type="submit">Submit</Button>
                                         </Box>
@@ -383,5 +376,5 @@ if(client){
     );
 };
 
-export default AddNewOrder2;
+export default NewOrder2;
 

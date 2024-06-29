@@ -17,6 +17,8 @@ import UserPage1 from './user/UserPage1';
 import UserPage2 from './user/UserPage2';
 import AddNewOrder from './user/AddNewOrder';
 import AddNewOrderT from './tailor/AddNewOrderT';
+import NewOrder1 from './user/NewOrder1';
+import NewOrder2 from './user/NewOrder2';
 
 function App() {
   return (
@@ -40,9 +42,11 @@ function App() {
             <Route path="/tailor/TrackOrders" element={<TrackOrders />} />
 
             {/*user routes*/}
-            <Route path="/user/UserPage1" element={<UserPage1 />} />
-            <Route path="/user/:_id" element={<UserPage2 />} />
-            <Route path="/user/AddNewOrder" element={<AddNewOrder/>} />
+            <Route path="/user/:_ID" element={<UserPage1 />} />
+            <Route path="/user/:_ID/:_id" element={<UserPage2 />} />
+            <Route path="/user/:_ID/:_id/AddNewOrder" element={<AddNewOrder/>} />
+            <Route path="/user/NewOrder1" element={<NewOrder1/>} />
+            <Route path="/user/NewOrder2" element={<NewOrder2/>} />
 
           </Routes>
         </Router>

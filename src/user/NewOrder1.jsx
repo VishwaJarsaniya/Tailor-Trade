@@ -1,10 +1,16 @@
-import React, { useState } from "react";
-import { Card, CardContent, Grid, Typography, TextField, Select, MenuItem, Button, FormControl } from "@mui/material";
+import React, { useState,useEffect } from "react";
+import { Card, CardContent, Grid, Typography, TextField, Select, MenuItem, Button, FormControl, Avatar } from "@mui/material";
 import camera from "../img/camera.png";
+import { useParams } from "react-router-dom";
 
-const AddNewOrder1 = ({ formData1, onNext, onChange1 }) => {
-    const [imagePreview, setImagePreview] = useState(camera);
-  
+const NewOrder1 = ({ formData1, onNext, onChange1 }) => {
+    
+    const [imagePreview, setImagePreview] = useState( formData1.pic || camera);
+
+    useEffect(() => {
+        setImagePreview(formData1.pic || camera);
+    }, [formData1.pic]);
+    
     const handleImageChange = async (event) => {
       const file = event.target.files[0];
       console.log(event.target.files[0]);
@@ -30,7 +36,7 @@ const AddNewOrder1 = ({ formData1, onNext, onChange1 }) => {
         console.log("Error Uploading Files", e);
       }
    
-      console.log(formData1);
+      console.log(formData);
       // handleAvatarChange(event);
       if (file) {
         const reader = new FileReader();
@@ -188,4 +194,4 @@ const AddNewOrder1 = ({ formData1, onNext, onChange1 }) => {
     );
   };
   
-  export default AddNewOrder1;
+  export default NewOrder1;
