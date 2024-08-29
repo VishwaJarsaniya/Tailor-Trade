@@ -25,13 +25,14 @@ function UserPage2() {
     useEffect(() => {
         const fetchTailors = async () => {
             try {
-                const response = await fetch(`http://localhost:8080/tailor/${_id}`, {
+                const response = await fetch(`https://tailortradebackendweb.onrender.com/tailor/${_id}`, {
                     method: "GET"
                 });
                 if (!response.ok) throw Error('Did not receive expected data');
                 const result = await response.json();
                 console.log(result);
                 setTailor([result]);
+                setIsLoading(false);
             } catch (err) {
                 console.error('Error fetching data:', err);
             }

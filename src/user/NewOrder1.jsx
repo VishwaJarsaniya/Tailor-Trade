@@ -20,7 +20,7 @@ const NewOrder1 = ({ formData1, onNext, onChange1 }) => {
       formData.append('pic', file);
     
       try {
-        const upload = await fetch("http://localhost:8080/api/upload", {
+        const upload = await fetch("https://tailortradebackendweb.onrender.com/api/upload", {
           method: "POST",
           body: formData,
         });

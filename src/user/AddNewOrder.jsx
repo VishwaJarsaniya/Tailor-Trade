@@ -26,7 +26,7 @@ function AddNewOrder() {
     useEffect(() => {
         const fetchUsers = async () => {
           try {
-            const response = await fetch(`http://localhost:8080/user/${_ID}`, {
+            const response = await fetch(`https://tailortradebackendweb.onrender.com/user/${_ID}`, {
               method: "GET",
             });
             const result = await response.json();

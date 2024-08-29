@@ -38,7 +38,7 @@ const NewOrder2=({formData ,formData1,onBack,onChange})=> {
 
     const handleClick = async (outfitType) => {
         try {
-            const response = await fetch(`http://localhost:8080/tailor/${_id}`, {
+            const response = await fetch(`https://tailortradebackendweb.onrender.com/tailor/${_id}`, {
                 method: 'GET'
             });
             const result = await response.json();
@@ -78,7 +78,7 @@ const NewOrder2=({formData ,formData1,onBack,onChange})=> {
     
     try {
 
-        const response = await fetch('http://localhost:8080/user/update', {
+        const response = await fetch('https://tailortradebackendweb.onrender.com/user/update', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ const NewOrder2=({formData ,formData1,onBack,onChange})=> {
         
 if(user){
     try {
-        const response = await fetch('http://localhost:8080/order/orders', {
+        const response = await fetch('https://tailortradebackendweb.onrender.com/order/orders', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -126,7 +126,7 @@ if(user){
                 type:formData.type
             }
             try{
-                const payment=await fetch("http://localhost:8080/payment/checkout",{
+                const payment=await fetch("https://tailortradebackendweb.onrender.com/payment/checkout",{
                     method:"POST",
                     headers: {
                         'Content-Type': 'application/json',

@@ -46,7 +46,7 @@ const UserPage1=()=> {
   useEffect(() => {
     const fetchTailors = async () => {
       try {
-        const response = await fetch("http://localhost:8080/tailor/getAllTailors", {
+        const response = await fetch("https://tailortradebackendweb.onrender.com/tailor/getAllTailors", {
           method: "GET",
         });
         const result = await response.json();
